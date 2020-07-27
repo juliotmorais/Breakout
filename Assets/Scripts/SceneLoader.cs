@@ -14,6 +14,7 @@ public class SceneLoader : MonoBehaviour {
     public void LoadMenuScene()
     {
         SceneManager.LoadScene(0);
+        FindObjectOfType<GameStatus>().ResetGame();
     }
     public void LoadWinScene()
     {
