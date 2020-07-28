@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
     [SerializeField] AudioClip breakSound;
     [SerializeField] GameObject blockSparkleVFX;
-    [SerializeField] int timesHit = 0;
-    [SerializeField] int maxHitsToBreak = 3;
+    [SerializeField] int timesHit;
+    [SerializeField] int maxHitsToBreak;
     [SerializeField] Sprite[] blockDamageSprites;
 
 
@@ -52,7 +53,16 @@ public class Block : MonoBehaviour
     private void ShowNextBlockDamageSprite()
     {
         int spriteIndex = timesHit - 1;
-        GetComponent<SpriteRenderer>().sprite = blockDamageSprites[spriteIndex];
+        if(blockDamageSprites[spriteIndex] != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = blockDamageSprites[spriteIndex];
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("block sprite is missing: "+gameObject.name);
+
+        }
+
     }
 
     private void TriggerSparklesVFX()
