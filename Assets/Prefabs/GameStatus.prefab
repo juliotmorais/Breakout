@@ -304,3 +304,4 @@ MonoBehaviour:
   score: 0
   pointsPerBlock: 100
   scoreText: {fileID: 292945476}
+  isAutoPlayEnabled: 0
